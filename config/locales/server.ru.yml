@@ -1,0 +1,8 @@
+ru:
+  site_settings:
+    lithium_sso_mode: Включить режим Lithium SSO
+    lithium_sso_secret: Секретный ключ Lithium SSO
+    lithium_sso_client_id: ID клиента Lithium SSO
+    lithium_sso_cookie_name: Имя cookie Lithium SSO
+
+  lithium_sso_no_cookie: 'Мы не можем вас авторизовать. Убедитесь, что cookie включены.'
