@@ -4,5 +4,8 @@ plugins:
     default: false
   lithium_sso_secret: ~
   lithium_sso_client_id: ~
-  lithium_sso_cookie_name:
-    default: "lithiumSSO"
+  lithium_sso_login_cookie_name:
+    default: lithiumSSO
+  lithium_sso_logout_cookie_names:
+    default: lithiumSSO
+    type: list

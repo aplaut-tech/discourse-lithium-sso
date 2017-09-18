@@ -11,7 +11,7 @@ module LithiumSSO
 
         def lithium_sso_login
           # Get Lithium cookie
-          sso_cookie = cookies[SiteSetting.lithium_sso_cookie_name] or
+          sso_cookie = cookies[SiteSetting.lithium_sso_login_cookie_name] or
             return render_sso_error(text: I18n.t("plugins.lithium_sso_no_cookie"), status: 400)
 
           # Read it
@@ -106,6 +106,16 @@ module LithiumSSO
 
         alias_method :discourse_sso_login, :sso_login
         def sso_login; lithium_sso? ? lithium_sso_login : discourse_sso_login end
+
+
+        def destroy_with_lithium_cookie
+          destroy_without_lithium_cookie
+          Array.wrap(SiteSetting.lithium_sso_logout_cookie_names.try(:split, '|')).each do |cookie_name|
+            cookies.delete(cookie_name, domain: :all)
+          end
+        end
+
+        alias_method_chain :destroy, :lithium_cookie
 
 
         private
